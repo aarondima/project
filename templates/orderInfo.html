@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <table class="table table-striped">
+        <thread>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+        </thread>
+        <tbody>
+            {% for product in orders.items %}
+            <tr>
+              <th scope="row">{{loop.index0}}</th>
+              <td>{{ product.product.name}}</td>
+              <td>{{ product.product.price }}</td>
+              <td>{{ product.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+  
+      </table>
+      <ul class="list-group">
+        <li class="list-group-item disabled">Est. Total: {{total}}</li>
+        <li class="list-group-item">Customer Name: {{ orders.customer.name }}</li>
+        <li class="list-group-item">Order Created: {{ orders.created }}</li>
+        <li class="list-group-item">Order Processed: {{ orders.processed }}</li>
+      </ul>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <form action="{{ url_for('html.process_order', order_id=orders.id) }}" method="POST">
+          <button type="submit" class="btn btn-primary {% if orders.processed %}disabled{% endif %}" {% if orders.processed %}disabled{% endif %}>
+            {% if orders.processed %}
+              Order Processed
+            {% else %}
+              Process Order
+            {% endif %}
+          </button>
+        </form>
+        
+        <form method="POST" action="{{ url_for('html.order_delete', order_id=orders.id) }}">
+          <button class="btn btn-warning {% if orders.processed %}disabled{% endif %}" {% if orders.processed %}disabled{% endif %}" type="submit">Delete</button>
+        </form>
+      </div>
+      
+</div>
+{% endblock %}

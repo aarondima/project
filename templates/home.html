@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="{{ url_for('static', filename='bread.jpg')}}" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="{{ url_for('static', filename='roastchicken.jpg')}}" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="{{ url_for('static', filename='snowflakeApple.jpg')}}" alt="Third slide">
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

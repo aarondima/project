@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <table class="table table-striped">
+      <thread>
+        <th scope="col">#</th>
+        <th scope="col">OrderId</th>
+        <th scope="col">Order Total</th>
+        <th scope="col">Process</th>
+
+      </thread>
+      <tbody>
+        {% for order in customerOrders %}
+          <tr>
+            <th scope="row">{{loop.index0}}</th>
+            <td><a href="{{ url_for('html.get_order', order_id=order.id) }}">{{order.id}}</a></td>
+            <td>{{order.get_total()}}</td>
+            <td>{{order.processed}}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+
+    </table>
+</div>
+{% endblock %}

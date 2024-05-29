@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Customers</h1>
+    <table class="table table-striped">
+      <thread>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Balance</th>
+      </thread>
+      <tbody>
+        {% for customer in customers %}
+          <tr>
+            <th scope="row">{{loop.index0}}</th>
+            <td><a href="{{ url_for('html.get_customer', customer_id=customer.id) }}">{{customer.name}}</a></td>
+            <td>{{customer.phone}}</td>
+            <td>{{customer.balance}}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

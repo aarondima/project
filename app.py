@@ -193,5 +193,5 @@ app.register_blueprint(api_categories_bp, url_prefix="/api/categories")
 #         strategy = data['strategy']
 #     order.process(strategy)
 #     return "Order processed", 200
-if __name__ == "__main__":
-    app.run(debug=True, port=8888)
+# if __name__ == "__main__":
+#     app.run(debug=True, port=8888)
